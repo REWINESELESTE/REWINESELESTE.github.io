@@ -1,0 +1,242 @@
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  color: #111;
+  font-size: 13px;
+  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  letter-spacing: 1.5px;
+}
+* {
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  margin-bottom: 8px;
+}
+.content {
+  max-width: 900px;
+}
+.homepage {
+  display: none;
+}
+a {
+  text-decoration: none;
+  color: #111;
+}
+.iframe-wrapper {
+  position: relative;
+  padding-bottom: calc(315 / 560 * 100%);
+  margin-bottom: 15px;
+  height: 0;
+}
+.iframe-wrapper iframe {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+nav {
+  padding: 15px;
+  background: white;
+  line-height: 1.2;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+}
+nav.project-nav {
+  height: auto;
+}
+.project-nav .main-nav,
+.project-nav .secondary-nav {
+  display: none;
+}
+.project-nav h1 {
+  margin-bottom: 0;
+}
+.main-nav {
+  text-align: right;
+}
+.project {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-top: 48px;
+}
+.secondary-nav {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+h1 {
+  font-size: 1.2em;
+  font-weight: normal;
+  margin-top: 0;
+}
+img {
+  display: block;
+  width: 100%;
+}
+a.active {
+  color: #0019ff;
+}
+.project a {
+  color: #0019ff;
+}
+nav h1 {
+  letter-spacing: 10px;
+  text-align: right;
+  margin-bottom: 30px;
+  margin-right: -10px;
+}
+.project-vertical img {
+  margin-bottom: 15px;
+}
+.project-horizontal img {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 15px;
+}
+.project-slider .wrapper {
+  position: fixed;
+}
+.project-slider li {
+  display: none;
+  margin: 0;
+}
+.project-slider li.active {
+  display: block;
+}
+.project-slider p {
+  margin-top: 15px;
+  margin-bottom: 0;
+  font-size: 13px;
+  width: 70%;
+}
+.project-slider .arrows {
+  margin-top: 15px;
+  width: 30%;
+  user-select: none;
+}
+.project-slider .arrows span {
+  cursor: pointer;
+  padding-right: 5px;
+}
+.project-slider img {
+  cursor: pointer;
+}
+.cv p {
+  margin-top: 0;
+}
+.cv a {
+  color: #0019ff;
+  text-decoration: none;
+}
+.project h1 {
+  letter-spacing: 10px;
+}
+@media only screen and (min-width: 600px) {
+  .cv,
+  .project-vertical p {
+    margin-top: 0;
+    line-height: 1.2;
+  }
+  .homepage {
+    display: block;
+  }
+  .project-nav .main-nav,
+  .project-nav .secondary-nav {
+    display: block;
+  }
+  .homepage img,
+  .project-slider img.vertical {
+    width: 100%;
+    height: auto;
+  }
+  .project-nav h1 {
+    margin-bottom: 30px;
+  }
+  .project h1 {
+    display: none;
+  }
+  nav.project-nav {
+    height: 100%;
+  }
+  .project-horizontal {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    padding-bottom: 0;
+    width: 5000px;
+    height: 580px;
+  }
+  .project-horizontal img {
+    display: block;
+    margin-bottom: 0;
+    padding-right: 15px;
+    width: auto;
+    height: 100%;
+  }
+  .secondary-nav {
+    bottom: 30px;
+    left: 30px;
+  }
+  nav h1 {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+  .project {
+    padding-left: 242px;
+    padding-top: 81px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+  }
+  .homepage {
+    padding-left: 242px;
+    padding-top: 83px;
+    padding-right: 30px;
+  }
+  nav {
+    width: 242px;
+    padding: 30px;
+    padding-top: 81px;
+  }
+  nav,
+  nav.project-nav {
+    padding-top: 81px;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .project-slider img {
+    width: auto;
+    height: 400px;
+  }
+  // .project-slider img.panorama {
+  //   width: auto;
+  //   height: 400;
+  // }
+}
+// @media only screen and (min-width: 1300px) {
+//   .project-slider img.panorama {
+//     width: 1000px;
+//   }
+// }
+nav a:hover {
+  color: #0019ff;
+  text-decoration: none;
+}
