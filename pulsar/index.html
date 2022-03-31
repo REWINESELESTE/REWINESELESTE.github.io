@@ -5,15 +5,15 @@
       content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"
       name="viewport"
     />
-    <title>BUSF</title>
+    <title>busf</title>
     <link rel="shortcut icon" href="/favicon.ico" />
-    <script src="js/index.js"></script>
+    <script src="/js/index.js"></script>
   </head>
-  <link href="index.css" rel="stylesheet" type="text/css" />
+  <link href="/index.css" rel="stylesheet" type="text/css" />
   <body>
     <div class="content">
-      <nav>
-        <h1>BUSF</h1>
+      <nav class="project-nav">
+        <h1><a href="/">BUSF</a></h1>
         <ul class="main-nav">
           <li>
             <a href="/max_msp">gear / max msp, kyma</a>
@@ -31,7 +31,7 @@
             <a href="/fm_8">gear / fm 8</a>
           </li>
           <li>
-            <a href="/pulsar">gear / pulsar</a>
+            <a class="active" href="/pulsar">gear / pulsar</a>
           </li>
 
           <li>
@@ -44,8 +44,22 @@
           </li>
         </ul>
       </nav>
-      <div class="homepage" id="homepage">
-        <img src="main.jpeg" alt="main" />
+      <div class="project project-vertical">
+        <p style="margin-bottom: 60px">
+          Show in Kyiv organised by Kyiv Noise. Together with BSW on New Pulsar
+          Generator by Marcin Pietruszewski. No master, no edit for now.
+        </p>
+        <figure>
+          <!-- <figcaption>Listen to addiction live:</figcaption> -->
+          <audio
+            controls
+            src="https://radiosygma.ams3.cdn.digitaloceanspaces.com/personal/busf_bsw_pulsar.mp3"
+          >
+            Your browser does not support the
+            <code>audio</code> element.
+          </audio>
+        </figure>
+        <img src="image_1.jpeg" />
       </div>
     </div>
   </body>
