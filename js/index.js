@@ -104,4 +104,42 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 1000);
     }
   }
+
+  // Add scramble functionality to existing BUSF link
+  const busfLink = document.querySelector('nav h1 a');
+  if (busfLink) {
+    let isScrambled = false;
+    busfLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (isScrambled) {
+        resetButtons();
+      } else {
+        scrambleAllButtons();
+      }
+      isScrambled = !isScrambled;
+    });
+  }
 });
+
+function scrambleText(text) {
+  return text.split('').sort(() => Math.random() - 0.5).join('');
+}
+
+function scrambleAllButtons() {
+  const links = document.querySelectorAll('.main-nav a');
+  links.forEach(link => {
+    if (!link.getAttribute('data-original')) {
+      link.setAttribute('data-original', link.textContent);
+    }
+    link.textContent = scrambleText(link.getAttribute('data-original'));
+  });
+}
+
+function resetButtons() {
+  const links = document.querySelectorAll('.main-nav a');
+  links.forEach(link => {
+    if (link.getAttribute('data-original')) {
+      link.textContent = link.getAttribute('data-original');
+    }
+  });
+}

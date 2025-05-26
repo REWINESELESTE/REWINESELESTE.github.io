@@ -96,6 +96,11 @@ a.active {
 .project a {
   color: #0019ff;
 }
+a[href="/works/setup_4_spirit"] {
+  white-space: nowrap;
+  padding-right: 0;
+  display: inline-block;
+}
 nav h1 {
   letter-spacing: 10px;
   text-align: right;
