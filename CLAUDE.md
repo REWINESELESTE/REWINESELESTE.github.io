@@ -52,9 +52,47 @@ The site uses a consistent fixed sidebar navigation across all pages:
 - Horizontal layouts stack vertically on small screens
 - Mobile-first CSS approach with breakpoints
 
+## Menu Management System
+
+### Automated Menu Injection
+
+The site includes an automated menu injection system to avoid manually updating navigation across all pages:
+
+**Files:**
+- `menu.html` - Source of truth for navigation template
+- `inject-menu.js` - Node.js script for automatic menu injection
+
+**Usage:**
+```bash
+node inject-menu.js
+```
+
+### Adding Injection Markers
+
+To enable auto-injection on any HTML file, wrap the `<nav>` element with injection markers:
+
+```html
+<!-- inject:nav -->
+<nav>
+  <!-- existing navigation content -->
+</nav>
+<!-- endinject -->
+```
+
+**The script will:**
+- Replace content between markers with `menu.html` template
+- Skip files without markers (allows manual editing)
+- Show summary of updated/skipped files
+
+### Workflow
+
+1. **Edit navigation:** Update `menu.html` with new project links
+2. **Run injection:** `node inject-menu.js` to update all marked files
+3. **Manual override:** Remove markers from specific files to edit individually
+
 ## Development Notes
 
 - No build process required - pure HTML/CSS/JS
 - No external dependencies or frameworks
 - Deployment via GitHub Pages (static hosting)
-- All navigation menus must be updated manually across pages when adding/removing projects
+- Use menu injection system to maintain navigation consistency
