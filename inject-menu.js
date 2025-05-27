@@ -45,6 +45,53 @@ class MenuInjector {
     return htmlFiles;
   }
 
+  getPageUrl(filePath) {
+    // Convert file path to URL path
+    const relativePath = path.relative(__dirname, filePath);
+    
+    if (relativePath === 'index.html') {
+      return '/';
+    }
+    
+    // Remove index.html from the end and ensure leading slash
+    let urlPath = relativePath.replace(/\/index\.html$/, '').replace(/^(?!\/)/, '/');
+    
+    // Handle root level files
+    if (urlPath === '/index.html') {
+      urlPath = '/';
+    }
+    
+    return urlPath;
+  }
+
+  setActiveMenuItem(menuContent, currentUrl) {
+    // First, remove any existing active classes
+    let modifiedMenu = menuContent.replace(/class="active"/g, '');
+    
+    // Find and activate the matching menu item
+    const linkRegex = /<a href="([^"]+)"([^>]*)>/g;
+    
+    modifiedMenu = modifiedMenu.replace(linkRegex, (match, href, attributes) => {
+      // Check if this link matches the current page
+      const isActive = (currentUrl === href) || 
+                      (currentUrl === '/' && href === '/') ||
+                      (currentUrl !== '/' && href !== '/' && currentUrl === href);
+      
+      if (isActive) {
+        // Add active class to the link
+        if (attributes.includes('class=')) {
+          return match.replace(/class="([^"]*)"/, 'class="$1 active"');
+        } else {
+          return `<a href="${href}" class="active"${attributes}>`;
+        }
+      }
+      
+      return match;
+    });
+    
+    return modifiedMenu;
+  }
+
   injectMenu(filePath, menuContent) {
     try {
       let content = fs.readFileSync(filePath, 'utf8');
@@ -63,14 +110,18 @@ class MenuInjector {
         return false;
       }
       
+      // Get the current page URL and set active menu item
+      const currentUrl = this.getPageUrl(filePath);
+      const activeMenuContent = this.setActiveMenuItem(menuContent, currentUrl);
+      
       // Replace content between markers
       const before = content.substring(0, startIndex + this.startTag.length);
       const after = content.substring(endIndex);
-      const newContent = before + '\n' + menuContent + '\n' + after;
+      const newContent = before + '\n' + activeMenuContent + '\n' + after;
       
       // Write back to file
       fs.writeFileSync(filePath, newContent, 'utf8');
-      console.log(`✅ Updated ${path.relative(__dirname, filePath)}`);
+      console.log(`✅ Updated ${path.relative(__dirname, filePath)} (active: ${currentUrl})`);
       return true;
       
     } catch (error) {
