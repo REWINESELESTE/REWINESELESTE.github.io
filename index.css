@@ -67,6 +67,12 @@ nav.project-nav {
 .main-nav {
   text-align: right;
 }
+.main-nav li {
+  text-align: left;
+}
+.main-nav li:last-child {
+  text-align: right;
+}
 .project {
   padding-left: 15px;
   padding-right: 15px;
@@ -201,6 +207,7 @@ nav h1 {
     position: absolute;
     top: 30px;
     right: 30px;
+    text-align: right;
   }
   .project {
     padding-left: 242px;
@@ -226,6 +233,15 @@ nav h1 {
   nav.project-nav {
     padding-top: 81px;
   }
+  .main-nav {
+    text-align: right;
+  }
+  .main-nav li {
+    text-align: left;
+  }
+  .main-nav li:last-child {
+    text-align: right;
+  }
 }
 @media only screen and (min-width: 1000px) {
   .project-slider img {
@@ -245,4 +261,38 @@ nav h1 {
 nav a:hover {
   color: #0019ff;
   text-decoration: none;
+}
+
+/* Menu visibility rules */
+.works-page-only {
+  display: none;
+}
+
+.main-page-only {
+  display: block;
+}
+
+/* Show project links on works and project pages */
+body[class*='works'] .works-page-only {
+  display: block;
+}
+
+/* Hide works button on works and project pages */
+body.hide-works-button .main-page-only {
+  display: none !important;
+}
+
+/* On info page, show only works and info buttons */
+body.info-page .works-page-only {
+  display: none;
+}
+
+body.info-page .main-page-only {
+  display: block;
+}
+
+/* Keep info button visible and right-aligned on all pages */
+.main-nav li:last-child {
+  display: block !important;
+  text-align: right;
 }
